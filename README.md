@@ -1,5 +1,8 @@
 # nuxt-deldreth.me
 
+[ ] "Card" component
+[ ] List of articles on entry page
+
 ## Build Setup
 
 ```bash
