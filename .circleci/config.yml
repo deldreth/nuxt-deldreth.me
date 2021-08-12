@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 parameters:
   do-release:
@@ -16,6 +16,10 @@ jobs:
           keys:
             - node-v1-{{ checksum "package-lock.json" }}
 
+      - run: |
+          git config user.email "devin.eldreth@gmail.com"
+          git config user.name "Devin Eldreth"
+
       - run:
           name: Install dependencies
           command: npm ci
@@ -29,9 +33,54 @@ jobs:
           name: Run linter
           command: npm run lint
 
+      - run:
+          name: Generate Static Site
+          command: npm run generate
+
+      - when:
+          condition:
+            equal: [false, << pipeline.parameters.do-release >>]
+          steps:
+            - run:
+                name: Version and Release RC
+                command: npm run release -- --prerelease --skip.changelog
+            - run: git push --follow-tags origin main
+
+      - when:
+          condition:
+            equal: [true, << pipeline.parameters.do-release >>]
+          steps:
+            - run:
+                name: Version and Release Production
+                command: npm run release
+
+      - persist_to_workspace:
+          root: dist
+          paths: .
+
+  deploy:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - attach_workspace:
+          at: .
+
+      - run: sudo pip install awscli
+
+      - when:
+          condition:
+            equal: [false, << pipeline.parameters.do-release >>]
+          steps:
+            - run: aws s3 rm s3://staging.deldreth.me --recursive
+            - run:
+                name: Deploy to Staging
+                command: aws s3 sync . s3://staging.deldreth.me/ --acl public-read
+
+      # - run: aws configure set preview.cloudfront true
+
       # - run:
-      #     name: Run tests
-      #     command: npm run test
+      #     name: Invalidate CDN
+      #     command: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
 
 workflows:
   version: 2
@@ -42,4 +91,10 @@ workflows:
             branches:
               only:
                 - main
-                - master
+      - deploy:
+          requires:
+            - ci
+          filters:
+            branches:
+              only:
+                - main
