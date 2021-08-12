@@ -1,5 +1,10 @@
 version: 2
 
+parameters:
+  do-release:
+    type: boolean
+    default: false
+
 jobs:
   ci:
     docker:
