@@ -21,5 +21,10 @@ export default {
       article,
     };
   },
+  head: {
+    bodyAttrs: {
+      class: 'bg-gray-800',
+    },
+  },
 };
 </script>

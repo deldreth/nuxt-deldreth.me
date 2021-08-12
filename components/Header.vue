@@ -3,27 +3,48 @@
     class="
       bg-gray-900
       border-b-2 border-purple
-      p-8
+      grid grid-cols-2
+      md:gap-0 md:grid-cols-3 md:grid-rows-1 md:p-8
+      p-4
+      place-items-center
       shadow-xl
       text-dracula
-      grid
-      md:grid-cols-3
-      place-items-center
     "
   >
-    <navigation class="place-self-start self-center">
+    <div
+      class="
+        col-span-2
+        flex
+        gap-8
+        md:col-span-1 md:mt-0 md:order-first md:place-self-start md:self-center
+        mt-8
+        order-last
+      "
+    >
       <NavItem :active="true">Blog</NavItem>
       <NavItem>Apps</NavItem>
-    </navigation>
-    <div class="text-4xl font-semibold">@deldreth</div>
-    <div class="place-self-end self-center">Links</div>
+    </div>
+    <div class="font-semibold md:text-4xl text-2xl">@deldreth</div>
+    <div
+      class="flex gap-4 md:place-self-end md:self-center text-2xl text-green"
+    >
+      <a
+        ><img
+          :src="require('~/assets/walter.png')"
+          class="max-h-8"
+          alt="Walter Melon"
+      /></a>
+      <a><font-awesome-icon :icon="['fab', 'github']" /></a>
+      <a><font-awesome-icon :icon="['fab', 'twitter']" /></a>
+      <a><font-awesome-icon :icon="['fab', 'linkedin']" /></a>
+    </div>
   </header>
 </template>
 
 <script lang="ts">
 export default {
   created() {
-    console.log(this.$router.options.routes);
+    // console.log(this.$router.options.routes);
   },
 };
 </script>

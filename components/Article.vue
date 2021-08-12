@@ -15,12 +15,12 @@
       :src="require(`~/assets/${article.thumbnail}`)"
       :style="{ backgroundColor: article.thumbnailBg }"
       alt=""
-      class="rounded-md max-h-32 md:max-h-full"
+      class="max-h-32 md:max-h-full rounded-md"
       v-if="article.thumbnail"
     />
 
     <div class="col-span-2 md:ml-6" :class="!article.thumbnail && 'col-span-3'">
-      <h2 class="leading-normal mb-2 mt-4 text-lg md:text-2xl text-indigo-400">
+      <h2 class="leading-normal mb-2 md:text-2xl mt-4 text-indigo-300 text-lg">
         <nuxt-link :to="article.path">{{ article.title }}</nuxt-link>
       </h2>
 
@@ -30,7 +30,7 @@
 
       <nuxt-content
         :document="{ body: article.excerpt }"
-        class="mb-4 text-sm md:text-lg text-white"
+        class="mb-4 text-sm md:text-lg text-light"
       />
 
       <Tag v-for="tag in article.tags" :key="tag" :tag="tag" />
