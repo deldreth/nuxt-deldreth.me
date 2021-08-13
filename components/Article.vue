@@ -20,17 +20,26 @@
     />
 
     <div class="col-span-2 md:ml-6" :class="!article.thumbnail && 'col-span-3'">
-      <h2 class="leading-normal mb-2 md:text-2xl mt-4 text-indigo-300 text-lg">
+      <h2
+        class="
+          leading-normal
+          mb-2
+          mt-4
+          text-indigo-300 text-lg
+          md:text-2xl
+          xl:text-3xl
+        "
+      >
         <nuxt-link :to="article.path">{{ article.title }}</nuxt-link>
       </h2>
 
-      <h3 class="mb-4 text-green md:text-xl">
+      <h3 class="mb-4 text-green md:text-xl xl:text-2xl">
         {{ article.date | formatDate }}
       </h3>
 
       <nuxt-content
         :document="{ body: article.excerpt }"
-        class="mb-4 text-sm md:text-lg text-light"
+        class="mb-4 text-light md:text-lg xl:text-xl"
       />
 
       <Tag v-for="tag in article.tags" :key="tag" :tag="tag" />

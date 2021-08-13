@@ -1,9 +1,7 @@
 <template>
-  <div
-    class="gap-8 grid grid-cols-1 max-w-screen-lg md:p-8 mx-auto p-4 pb-16 pt-8"
-  >
+  <div class="gap-8 grid grid-cols-1">
     <div v-for="group in articles" :key="group.year">
-      <div class="text-3xl text-pink mt-4 mb-4">
+      <div class="text-3xl 2xl:text-4xl text-pink mt-4 mb-4">
         {{ group.year }}
       </div>
 
@@ -41,11 +39,6 @@ export default {
     return {
       articles,
     };
-  },
-  head: {
-    bodyAttrs: {
-      class: 'bg-gray-800',
-    },
   },
 };
 </script>

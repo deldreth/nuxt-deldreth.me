@@ -21,30 +21,20 @@
         order-last
       "
     >
-      <NavItem :active="true">Blog</NavItem>
-      <NavItem>Apps</NavItem>
+      <NavItem :active="$route.name === 'index'" :to="'/'">Blog</NavItem>
+      <NavItem :active="$route.name === 'apps'" :to="'/apps'">Apps</NavItem>
     </div>
+
     <div class="font-semibold md:text-4xl text-2xl">@deldreth</div>
-    <div
-      class="flex gap-4 md:place-self-end md:self-center text-2xl text-green"
-    >
-      <a
-        ><img
-          :src="require('~/assets/walter.png')"
-          class="max-h-8"
-          alt="Walter Melon"
-      /></a>
-      <a><font-awesome-icon :icon="['fab', 'github']" /></a>
-      <a><font-awesome-icon :icon="['fab', 'twitter']" /></a>
-      <a><font-awesome-icon :icon="['fab', 'linkedin']" /></a>
-    </div>
+
+    <Icons />
   </header>
 </template>
 
 <script lang="ts">
 export default {
-  created() {
-    // console.log(this.$router.options.routes);
+  watch: {
+    $route() {},
   },
 };
 </script>

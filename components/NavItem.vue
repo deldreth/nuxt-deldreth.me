@@ -1,10 +1,11 @@
 <template>
-  <a
-    class="font-medium p-1 pl-6 pr-6 rounded-full text-xl border-2 border-red"
-    :class="active ? 'text-gray-900 shadow-lg bg-red' : 'text-red'"
+  <nuxt-link
+    class="font-medium p-1 pl-6 pr-6 rounded-full text-xl border-2 border-cyan"
+    :class="active ? 'text-gray-900 shadow-lg bg-cyan' : 'text-cyan'"
+    :to="to"
   >
     <slot></slot>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
@@ -13,6 +14,9 @@ export default {
     active: {
       type: Boolean,
       default: false,
+    },
+    to: {
+      type: String,
     },
   },
 };
