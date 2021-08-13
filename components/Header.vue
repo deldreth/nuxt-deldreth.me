@@ -21,11 +21,17 @@
         order-last
       "
     >
-      <NavItem :active="$route.name === 'index'" :to="'/'">Blog</NavItem>
+      <NavItem
+        :active="
+          $route.name === 'index' || $route.name === 'articles-year-slug'
+        "
+        :to="'/'"
+        >Blog</NavItem
+      >
       <NavItem :active="$route.name === 'apps'" :to="'/apps'">Apps</NavItem>
     </div>
 
-    <div class="font-semibold md:text-4xl text-2xl">@deldreth</div>
+    <div class="md:text-4xl text-3xl font-light">@deldreth</div>
 
     <Icons />
   </header>
@@ -34,7 +40,9 @@
 <script lang="ts">
 export default {
   watch: {
-    $route() {},
+    $route() {
+      console.log(this.$route.name);
+    },
   },
 };
 </script>

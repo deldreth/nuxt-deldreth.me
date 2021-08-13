@@ -10,7 +10,7 @@ Previously, I covered the basics of GraphQL schema definition including types, q
 
 <!--more-->
 
-Previously: [GraphQL primer part one](/2018-10-05-graphql-primer-1)
+Previously: [GraphQL primer part one](/articles/2018/2018-10-05-graphql-primer-1)
 
 # Table of contents
 

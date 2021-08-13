@@ -1,5 +1,8 @@
 import tailwindTypography from '@tailwindcss/typography';
 import tailwindDracula from 'tailwind-dracula';
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+console.log(defaultTheme);
 
 export default {
   theme: {
@@ -11,22 +14,32 @@ export default {
             a: {
               color: theme('colors.gray.50'),
             },
-            h2: {
-              a: {
-                color: theme('colors.indigo.400'),
-              },
+            h1: {
+              color: theme('colors.indigo.300'),
+              fontWeight: 600,
             },
-            h3: {
+            h2: {
               color: theme('colors.green'),
+              fontWeight: 400,
               a: {
                 color: theme('colors.green'),
               },
             },
-          },
-          tag: {
-            color: theme('colors.green'),
-            a: {
-              color: theme('colors.green'),
+            h3: {
+              color: theme('colors.pink'),
+              a: {
+                color: theme('colors.pink'),
+              },
+            },
+            code: {
+              backgroundColor: theme('colors.orange'),
+              color: theme('colors.gray.900'),
+              fontWeight: '600',
+              borderRadius: theme('borderRadius.DEFAULT'),
+            },
+            blockquote: {
+              backgroundColor: theme('colors.indigo.700'),
+              color: theme('colors.white'),
             },
           },
         },
