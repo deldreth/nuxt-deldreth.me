@@ -43,8 +43,8 @@ jobs:
           steps:
             - run:
                 name: Version and Release RC
-                command: npm run release -- --prerelease --skip.changelog
-            - run: git push --follow-tags origin main
+                command: |
+                  npm run release -- --prerelease --skip.changelog --message "chore(release): %s [ci skip]"
 
       - when:
           condition:
@@ -52,7 +52,10 @@ jobs:
           steps:
             - run:
                 name: Version and Release Production
-                command: npm run release
+                command: |
+                  npm run release --message "chore(release): %s [ci skip]"
+
+      - run: git push --follow-tags origin main
 
       - persist_to_workspace:
           root: dist
@@ -67,14 +70,11 @@ jobs:
 
       - run: sudo pip install awscli
 
-      - when:
-          condition:
-            equal: [false, << pipeline.parameters.do-release >>]
-          steps:
-            - run: aws s3 rm s3://staging.deldreth.me --recursive
-            - run:
-                name: Deploy to Staging
-                command: aws s3 sync . s3://staging.deldreth.me/ --acl public-read
+      - run: aws s3 rm s3://staging.deldreth.me --recursive
+
+      - run:
+          name: Deploy to Staging
+          command: aws s3 sync . s3://staging.deldreth.me/ --acl public-read
 
       # - run: aws configure set preview.cloudfront true
 
@@ -95,6 +95,5 @@ workflows:
           requires:
             - ci
           filters:
-            branches:
-              only:
-                - main
+            tags:
+              only: /^v.*/
