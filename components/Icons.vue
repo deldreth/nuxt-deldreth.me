@@ -1,9 +1,18 @@
 <template>
-  <div class="flex gap-4 md:place-self-end md:self-center text-2xl text-green">
-    <a
+  <div
+    class="
+      flex
+      gap-3
+      md:place-self-end md:self-center
+      text-2xl
+      md:text-4xl
+      text-green
+    "
+  >
+    <a href="/melon"
       ><img
         :src="require('~/assets/walter.png')"
-        class="max-h-8"
+        class="max-h-8 md:max-h-10"
         alt="Walter Melon"
     /></a>
     <a href="http://github.com/deldreth" target="_blank"
