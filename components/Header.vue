@@ -63,9 +63,7 @@
 <script lang="ts">
 export default {
   watch: {
-    $route() {
-      console.log(this.$route.name);
-    },
+    $route() {},
   },
 };
 </script>

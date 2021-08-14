@@ -1,8 +1,5 @@
 import tailwindTypography from '@tailwindcss/typography';
 import tailwindDracula from 'tailwind-dracula';
-const defaultTheme = require('tailwindcss/defaultTheme');
-
-console.log(defaultTheme);
 
 export default {
   theme: {
