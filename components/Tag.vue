@@ -1,5 +1,6 @@
 <template>
   <a
+    :href="`/tags/${tag}`"
     class="
       bg-orange
       inline-block

@@ -40,9 +40,9 @@
         }}</a>
       </h4>
 
-      <div>
+      <!-- <div>
         <Tag v-for="tag in app.tags" :key="tag" :tag="tag" />
-      </div>
+      </div> -->
     </section>
   </div>
 </template>

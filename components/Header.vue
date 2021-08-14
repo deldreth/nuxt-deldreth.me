@@ -29,7 +29,9 @@
       >
         <NavItem
           :active="
-            $route.name === 'index' || $route.name === 'articles-year-slug'
+            $route.name === 'index' ||
+            $route.name === 'articles-year-slug' ||
+            $route.name === 'tags-slug'
           "
           :to="'/'"
           >Blog</NavItem
