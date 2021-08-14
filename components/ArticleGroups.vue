@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   props: {
     articles: {
@@ -24,9 +24,9 @@ export default {
   },
   data() {
     return {
-      groups: this.articles.reduce((acc: any, article: any) => {
+      groups: this.articles.reduce((acc, article) => {
         const year = new Date(article.date).getFullYear();
-        const found = acc.find((a: any) => a.year === year);
+        const found = acc.find((a) => a.year === year);
         if (!found) {
           acc.push({
             year,

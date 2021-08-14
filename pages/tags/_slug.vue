@@ -2,7 +2,7 @@
   <ArticleGroups :articles="articles" />
 </template>
 
-<script lang="ts">
+<script>
 export default {
   async asyncData({ $content, params: { slug } }) {
     const articles = await $content('articles', { deep: true })
