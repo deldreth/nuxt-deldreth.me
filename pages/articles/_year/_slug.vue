@@ -1,7 +1,9 @@
 <template>
   <article class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto">
     <h1>{{ article.title }}</h1>
-    <h2>{{ article.date | formatDate }}</h2>
+    <h2>
+      <time :datetime="article.date">{{ article.date | formatDate }}</time>
+    </h2>
 
     <nuxt-content :document="article" />
   </article>

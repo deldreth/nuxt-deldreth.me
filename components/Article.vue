@@ -34,7 +34,7 @@
       </h2>
 
       <h3 class="mb-4 text-green md:text-xl xl:text-2xl">
-        {{ article.date | formatDate }}
+        <time :datetime="article.date">{{ article.date | formatDate }}</time>
       </h3>
 
       <nuxt-content
