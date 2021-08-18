@@ -1,16 +1,11 @@
 <template>
   <nuxt-link
-    class="
-      font-medium
-      p-1
-      pl-6
-      pr-6
-      rounded-full
-      text-md
-      md:text-xl
-      border-2 border-cyan
+    class="font-semibold p-1 pl-6 pr-6 rounded-full text-md md:text-xl"
+    :class="
+      active
+        ? 'text-gray-900 shadow-lg bg-gradient-to-b from-cyan to-purple'
+        : 'text-cyan'
     "
-    :class="active ? 'text-gray-900 shadow-lg bg-cyan' : 'text-cyan'"
     :to="to"
   >
     <slot></slot>
@@ -26,6 +21,7 @@ export default {
     },
     to: {
       type: String,
+      required: true,
     },
   },
 };
