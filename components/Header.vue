@@ -29,14 +29,16 @@
       >
         <NavItem
           :active="
-            $route.name === 'index' ||
-            $route.name === 'articles-year-slug' ||
-            $route.name === 'tags-slug'
+            ['index', 'articles-year-slug', 'tags-slug'].includes($route.name)
           "
           :to="'/'"
           >Blog</NavItem
         >
-        <NavItem :active="$route.name === 'apps'" :to="'/apps'">Apps</NavItem>
+        <NavItem
+          :active="['apps', 'apps-slug'].includes($route.name)"
+          :to="'/apps'"
+          >Apps</NavItem
+        >
       </div>
 
       <div
@@ -62,7 +64,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   watch: {
     $route() {},
