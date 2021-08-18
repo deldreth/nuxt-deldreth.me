@@ -1,7 +1,13 @@
 <template>
-  <div class="gap-8 grid grid-cols-1">
-    <div v-for="group in groups" :key="group.year">
-      <div class="text-3xl 2xl:text-4xl text-pink mt-4 mb-4">
+  <div class="prose prose-sm max-w-none">
+    <div
+      v-for="group in groups"
+      :key="group.year"
+      class="gap-6 grid grid-cols-1 mb-10"
+    >
+      <div
+        class="text-lg md:text-2xl xl:text-4xl text-pink text-right -mb-2 mt-4"
+      >
         {{ group.year }}
       </div>
 

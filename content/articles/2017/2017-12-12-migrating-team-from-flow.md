@@ -3,7 +3,7 @@ title: Migrating my team from flow to TypeScript
 date: 2017-12-12
 tags: ['typescript', 'flow', 'react']
 thumbnail: typescript.png
-published: false
+thumbnailBg: '#007ACC'
 ---
 
 After approximately 2 years of working with flow and its frustrations I decided it was time to move fully into TypeScript.

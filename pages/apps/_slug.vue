@@ -1,6 +1,10 @@
 <template>
-  <article class="prose lg:prose-lg xl:prose-xl mx-auto">
-    <img :src="require(`~/assets/${app.thumbnail}`)" alt="App Thumbnail" class="shadow-lg rounded-md" />
+  <article class="prose-sm prose lg:prose-lg xl:prose-xl mx-auto">
+    <img
+      :src="require(`~/assets/${app.thumbnail}`)"
+      alt="App Thumbnail"
+      class="shadow-lg rounded-md"
+    />
 
     <AppHeader :app="app" />
 

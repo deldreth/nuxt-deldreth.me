@@ -2,6 +2,8 @@
 title: Rapid prototyping with AWS AppSync and serverless
 date: 2018-10-07
 tags: ['30 minutes', 'graphql', 'serverless', 'aws appsync']
+thumbnail: appsync.png
+thumbnailBg: '#5075F780'
 ---
 
 Sometimes you need to be able to prototype an application or portion of one quickly and your data/access layer shouldn't get in the way. Fortunately, AWS AppSync makes this wholly simple.

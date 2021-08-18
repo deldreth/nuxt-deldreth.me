@@ -3,6 +3,7 @@ title: Publish TypeScript module declarations and bundling with rollup
 date: 2018-09-09
 tags: ['typescript', 'npm', 'rollup']
 thumbnail: typescript.png
+thumbnailBg: '#007ACC'
 ---
 
 It seems there's some tightly guarded industry secrets around publishing TypeScript module declarations effectively. Let's break it down.

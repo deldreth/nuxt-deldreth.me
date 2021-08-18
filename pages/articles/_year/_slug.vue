@@ -1,5 +1,5 @@
 <template>
-  <article class="prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto">
+  <article class="prose-sm prose lg:prose-lg xl:prose-xl mx-auto">
     <h1>{{ article.title }}</h1>
     <h2>
       <time :datetime="article.date">{{ article.date | formatDate }}</time>
@@ -22,11 +22,6 @@ export default {
     return {
       article,
     };
-  },
-  head: {
-    bodyAttrs: {
-      class: 'bg-gray-800',
-    },
   },
 };
 </script>
