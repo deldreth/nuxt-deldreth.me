@@ -60,6 +60,7 @@ export default {
   build: {},
   fontawesome: {
     icons: {
+      solid: ['faExternalLinkAlt'],
       brands: ['faGithub', 'faTwitter', 'faLinkedin'],
     },
   },

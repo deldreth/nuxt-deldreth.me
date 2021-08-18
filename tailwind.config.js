@@ -9,17 +9,20 @@ export default {
           css: {
             color: theme('colors.gray.50'),
             a: {
-              color: theme('colors.gray.50'),
+              color: theme('colors.pink'),
             },
             h1: {
               color: theme('colors.indigo.300'),
               fontWeight: 600,
+              a: {
+                color: theme('colors.indigo.300'),
+              },
             },
             h2: {
               color: theme('colors.green'),
               fontWeight: 400,
               a: {
-                color: theme('colors.green'),
+                color: theme('colors.pink'),
               },
             },
             h3: {

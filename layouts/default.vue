@@ -14,7 +14,7 @@
 export default {
   head: {
     bodyAttrs: {
-      class: 'bg-gray-800',
+      class: 'bg-darker',
     },
   },
 };
