@@ -1,6 +1,6 @@
 ---
 title: Keep It Secret
-date: 2020-12-20
+date: 2018-12-20
 tags: ['react', 'aws']
 thumbnail: apps/app_keepitsecret.png
 thumbnailBg: '#d8f1d0'
@@ -9,3 +9,5 @@ github: https://github.com/deldreth/web-keepitsecret.app
 ---
 
 Keep it safe.
+
+<!--more-->
