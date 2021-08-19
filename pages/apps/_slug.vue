@@ -8,6 +8,8 @@
 
     <AppHeader :app="app" />
 
+    <Toc :toc="app.toc" />
+
     <nuxt-content :document="app" />
   </article>
 </template>

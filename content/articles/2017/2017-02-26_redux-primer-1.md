@@ -10,22 +10,6 @@ A basic, barebones tutorial for Redux
 
 <!--more-->
 
-<a name='toc'></a>
-
-## Table of Contents
-
-1. [History: Flux and Redux](#history)
-2. [Terms](#terms)
-3. [The Three Principles](#three)
-4. [Data Flow](#data-flow)
-5. [Action Types and Creators](#actions)
-6. [The Store](#store)
-7. [Middleware](#middleware)
-8. [Immutability](#immutability)
-9. [Reducers](#reducers)
-10. [Selectors](#selectors)
-11. [Side Effects](#side-effects)
-
 _Some examples in this article use Flow typing._
 
 ---
@@ -34,7 +18,7 @@ I've been working with React and subsequently Redux for nearly two years. On occ
 
 Redux isn't out to get you. Sit back. Deep breath. Here we go.
 
-## History: Flux and Redux <a name="history"></a>
+## History: Flux and Redux
 
 To get where you're going it's important to know where you've been. Enter Flux. React at a very high level has always been a library for writing user interfaces. It never provided any strong data separation. Each component had state and various things modified that state. Communication between components largely boiled down to passing props down to children. Flux provides a unidirectional data flow: actions sent through a dispatcher which routed to a store and a change event would eventually be fired so components could rerender. Flux showed that React applications could have a separation of concerns. The store could reduce state and the view layer needed only rerender from the current state.
 
@@ -47,8 +31,6 @@ If you want to know more about the history and motivation behind redux then I su
 [top](#toc)
 
 ---
-
-<a name="terms"></a>
 
 ## Terms
 
@@ -93,8 +75,6 @@ const hasApplesReducer = (state = PREVIOUS_STATE, action: Object) => {
 
 ---
 
-<a name="three"></a>
-
 ## The Three Principles
 
 ### 1. Single Source of Truth
@@ -115,8 +95,6 @@ Pure functions. For a function to be pure the following statements must hold:
 [top](#toc)
 
 ---
-
-<a name="data-flow"></a>
 
 ## Data Flow
 
@@ -180,8 +158,6 @@ Action creators need not be any more complicated than this. They're simply funct
 
 ---
 
-<a name="store"></a>
-
 ## The Store
 
 The Redux Store is the workhorse of redux. Everything that is Redux passes through the store. In turn the store exposes the state and dispatch of Redux. Stores can get pretty complicated as they're extended through middleware. Often store creation is wrapped within a function.
@@ -222,8 +198,6 @@ Also, I prefer returning my store as a function. This isn't a requirement. You a
 
 ---
 
-<a name="middleware"></a>
-
 ## Middleware
 
 Our store is ready to party. Though, say we want to log actions as they move through the store. The best way to do this is through the store's middleware. Remember that state is immutable. Middleware must respect this princple. However, they can expose all sorts of functionality to the store. Logging is simple enough to outline the basis and if you've got any experience with Express' middleware api then this should sit well with you.
@@ -254,8 +228,6 @@ const middleware = (store: Object) =>
 
 ---
 
-<a name="immutability"></a>
-
 ## Immutability
 
 I don't intend to go too deep into immutability since other parts of this primer really attempt to enforce the idea that the state of Redux cannot be changed except through reducers returning new state. I do, however, want to provide a brief list of really useful immutability helpers.
@@ -269,8 +241,6 @@ I've also used [seamless-immutable](https://github.com/rtfeldman/seamless-immuta
 [top](#toc)
 
 ---
-
-<a name="reducers"></a>
 
 ## Reducers
 
@@ -346,8 +316,6 @@ Reducers can get fairly complicated. It's important to keep in mind that they mu
 
 ---
 
-<a name="selectors"></a>
-
 ## Selectors
 
 Another useful thing to do with Redux is to create functions that are referred to as selectors. They allow us to **compute derived state** which is a complex way to say that they allow us to make logic based off the entire state of the app. Selectors are commonly used in the `mapStateToProps()` function, but they are defined often defined alongside reducers.
@@ -402,8 +370,6 @@ In this situation the fields prop will be an array that contains a single object
 [top](#toc)
 
 ---
-
-<a name="side-effects"></a>
 
 ## Side Effects
 

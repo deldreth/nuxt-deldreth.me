@@ -1,30 +1,32 @@
 <template>
-  <div class="bg-gray-900 border-b-2 border-purple">
+  <div class="bg-gray-900 border-b-2 border-purple shadow-xl">
     <header
       class="
         grid grid-cols-1
-        md:gap-0 md:grid-cols-3 md:grid-rows-1 md:p-8
+        lg:gap-0 lg:grid-cols-3 lg:grid-rows-1 lg:p-8
         p-4
         place-items-center
-        shadow-xl
         text-dracula
-        max-w-screen-md
+        max-w-screen-lg
         xl:max-w-screen-xl
-        md:p-8
+        lg:p-8
         mx-auto
       "
     >
       <div
         class="
           flex
-          gap-4
-          md:col-span-1
-          md:mt-0
-          md:order-first
-          md:place-self-start
-          md:self-center
+          lg:col-span-1
+          lg:mt-0
+          lg:order-first
+          lg:place-self-start
+          lg:self-center
           mt-4
           order-last
+          justify-around
+          lg:justify-between
+          w-full
+          lg:w-1/2
         "
       >
         <NavItem
@@ -39,6 +41,11 @@
           :to="'/apps'"
           >Apps</NavItem
         >
+        <!-- <NavItem
+          :active="['arts', 'arts-slug'].includes($route.name)"
+          :to="'/arts'"
+          >Arts</NavItem
+        > -->
       </div>
 
       <div

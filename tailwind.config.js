@@ -41,6 +41,15 @@ export default {
               backgroundColor: theme('colors.indigo.700'),
               color: theme('colors.white'),
             },
+            '.toc': {
+              a: {
+                textDecoration: 'none',
+                color: theme('colors.gray.800'),
+              },
+            },
+            strong: {
+              color: theme('colors.orange'),
+            },
           },
         },
         sm: {

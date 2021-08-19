@@ -10,6 +10,7 @@
       bg-gradient-to-b
       from-gray-700
       to-darker
+      border-t-2 border-purple
     "
   >
     <slot />

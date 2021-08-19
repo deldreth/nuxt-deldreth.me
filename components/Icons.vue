@@ -3,16 +3,16 @@
     class="
       flex
       gap-3
-      md:place-self-end md:self-center
+      lg:place-self-end lg:self-center
       text-2xl
-      md:text-4xl
+      lg:text-4xl
       text-green
     "
   >
     <a href="/melon">
       <img
         :src="require('~/assets/walter.png')"
-        class="max-h-8 md:max-h-10"
+        class="max-h-8 lg:max-h-10"
         alt="Walter Melon"
       />
     </a>

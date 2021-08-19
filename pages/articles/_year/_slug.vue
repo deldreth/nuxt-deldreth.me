@@ -5,6 +5,8 @@
       <time :datetime="article.date">{{ article.date | formatDate }}</time>
     </h2>
 
+    <Toc :toc="article.toc" />
+
     <nuxt-content :document="article" />
   </article>
 </template>

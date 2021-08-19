@@ -10,25 +10,6 @@ In November I'll be giving a talk about GraphQL to the Asheville Javascript Deve
 
 <!--more-->
 
-# Table of contents
-
-- [Introduction](/2018-10-05-graphql-primer-1#Introduction)
-- [Schema: types, queries, and mutations](/2018-10-05-graphql-primer-1#Schema)
-  - [Scalar types](/2018-10-05-graphql-primer-1#schema-scalar)
-  - [Object types](/2018-10-05-graphql-primer-1#schema-object)
-  - [Queries](/2018-10-05-graphql-primer-1#schema-queries)
-  - [Mutations](/2018-10-05-graphql-primer-1#schema-mutations)
-- Writing a GraphQL service and server on top of MySQL
-- Querying: fetch, GraphiQL, and other clients
-- Apollo client
-- Queries in react-apollo
-- Mutations in react-apollo
-- Schema: Subscriptions
-- Serverless GraphQL with AWS Appsync
-- Do you need this in your stack?
-
-<a name="Introduction"></a>
-
 # Introduction
 
 I'm in an incredibly fortunate position with my job where I can freely suggest that we approach newer technologies to help solve our problems. One of those technologies, that's on the tip of every developer's tongue these days, is GraphQL. It's not that new. As of right now GraphQL is 3 years old, having been released in 2015. However, even in Asheville you can't throw a stick without hitting at least one dev expounding the merits and sometime frustrations of GraphQL.
@@ -41,15 +22,11 @@ At Firefly XD we manage a rather large React and Redux web application. The vast
 
 I'm a huge proponent of using whatever technology solves the problem quickly, expressively, and with minimal overhead. Part of the excitement of GraphQL isn't necessarily that it's just new, but that there are powerful services like AppSync and Prisma that faciliate the data access layer leaving the developer to simply write queries. Like any technology it's important to apply a critical lens when approaching it. Services like GraphQL, while useful and full of hype, may not necessarily be the best solution for your problem. There are a great many articles discussing the pros and cons of GraphQL (I strongly suggest searching for them if you're on the fence) and this article is really just intended to support my talk.
 
-<a name="Schema"></a>
-
 # Schema: types, queries, and mutations
 
 Your schema defines the shape and relationship of your data. It specifies the type values of fields returned by queries, providing queries and mutations with arguments and their returns. As we'll see later there are services like AppSync and Prisma that can use your schema to help map data to its source.
 
 For our service imagine we're creating a cat adoption agency management application. We need to store adoption agency locations and the cats that they shelter.
-
-<a name="schema-scalar"></a>
 
 ## Scalar types
 
@@ -60,8 +37,6 @@ name: String  # the field name may be null
 name: String! # the field name may not be null
 cats: [Cats]  # the field cats is a list of Cats
 ```
-
-<a name="schema-object"></a>
 
 ## Object types
 
@@ -100,8 +75,6 @@ type Cat {
 ```
 
 The cat type will probably need an id field at some point and we may want to resolve the location of an individual cat.
-
-<a name="schema-queries"></a>
 
 ## Queries
 
@@ -165,8 +138,6 @@ query GetLocation($id: ID!) {
 ```
 
 The named query here is `GetLocation` and it takes an id value and passes that value into the same location query.
-
-<a name="schema-mutations"></a>
 
 ## Mutations
 

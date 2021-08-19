@@ -12,28 +12,6 @@ Previously, I covered the basics of GraphQL schema definition including types, q
 
 Previously: [GraphQL primer part one](/articles/2018/2018-10-05-graphql-primer-1)
 
-# Table of contents
-
-- [Introduction](/2018-10-05-graphql-primer-1#Introduction)
-- [Schema: types, queries, and mutations](/2018-10-05-graphql-primer-1#Schema)
-  - [Scalar types](/2018-10-05-graphql-primer-1#schema-scalar)
-  - [Object types](/2018-10-05-graphql-primer-1#schema-object)
-  - [Queries](/2018-10-05-graphql-primer-1#schema-queries)
-  - [Mutations](/2018-10-05-graphql-primer-1#schema-mutations)
-- [Writing a GraphQL service on top of MySQL](#writing-service)
-  - [Prisma datamodel](#prisma-datamodel)
-  - [Generated schema](#graphql-generate)
-- [Writing a GraphQL server with Apollo Server](#writing-server)
-  - [The rest of the schema](#writing-schema)
-  - [Resolvers](#writing-resolvers)
-  - [Wrapping up](#writing-finish)
-- Apollo client
-- Queries in react-apollo
-- Mutations in react-apollo
-- Schema: Subscriptions
-- Serverless GraphQL with AWS Appsync
-- Do you need this in your stack?
-
 I'll also be including two links to repos that can be used to follow along. The first has the base docker compose setup needed to get started. The other is the end result for the server. This article does assume some basic experience/knowledge with Docker. I've selected [Prisma](https://prisma.io) for this portion largely due to my familiarity. There are, however, other great projects such as [Hasura](https://hasura.io/) that offer similar features.
 
 Prisma also creates a useful electron app, [graphql-playground](https://github.com/prisma/graphql-playground), that can be used to interact with the service here. Other's like GraphiQL can be used too.
@@ -101,8 +79,6 @@ docker-compose -f database/docker-compose.yml up -d
 
 Now to actually writing our service.
 
-<a name="writing-service"></a>
-
 # Writing a GraphQL service on top of MySQL
 
 For quick reference here's the final schema that we created in part one.
@@ -153,8 +129,6 @@ schema {
 
 For our data access layer we need to break this down into the datamodel.graphql file that Prisma is going to process to build our access schema. In this case we don't actually need our input, query and mutation, or schema types. Prisma also introduces some specific directives to our schema that it uses to extend the data definitions. The one we'll be using in our case is `@unique`. There are others like [@default](<https://www.prisma.io/docs/1.4/reference/service-configuration/data-modelling-(sdl)-eiroozae8u#default-value>) and [@relation](<https://www.prisma.io/docs/1.4/reference/service-configuration/data-modelling-(sdl)-eiroozae8u#relations>).
 
-<a name="prisma-datamodel"></a>
-
 ## Prisma datamodel
 
 In this case we only need our two main types: Location and Cat. Notice that I've added `@unique` to the `id` field. This will instruct Prisma that the field should be an auto increment key.
@@ -184,8 +158,6 @@ npx prisma deploy
 ```
 
 If you've gotten green lights across the board then that means you have a working data layer mapped through Prisma to your MySQL server. If you've installed a GraphQL client you should be able to inspect the schema at `http://localhost:4466`. Take note about how this schema differs from our intended one. Prisma makes a lot of useful assumptions about how we want to faciliate interacting with our data. It provides a number of ORM like types for querying data. We will use this schema to write the server.
-
-<a name="graphql-generate"></a>
 
 ## Generated schema
 
@@ -235,13 +207,9 @@ Inspecting the generated/prisma.graphql file shows a rather lengthy and complex 
 
 It's not important to go over all that's created by the generated schema, but it is a good idea to familiarize yourself with it. A number of the types defined within it will be used to create our server.
 
-<a name="writing-server"></a>
-
 # Writing a GraphQL server with Apollo Server
 
 To keep things simple for our server we will only be adding two new files. An index.js file and the rest of our schema. Up until now we've only been supplying the Prisma service with the data portions of our schema: Locations and Cats. Now we need to take the input types, queries, and mutations, and let Apollo Server know about them. Because the schema is interpreted at runtime and the Locations and Cats of our schema exist outside of the application side we need another package [graphql-import](https://github.com/prisma/graphql-import) to allows us to import types from one schema to another.
-
-<a name="writing-schema"></a>
 
 ## The rest of the schema
 
@@ -278,8 +246,6 @@ schema {
   mutation: Mutation
 }
 ```
-
-<a name="writing-resolvers"></a>
 
 ## Resolvers
 
@@ -441,8 +407,6 @@ const resolvers = {
 ```
 
 Here I'm mapping the input type arguments to the data object for the createCat and createLocation mutations. The result of the operation will be the resolved object (based on our schema).
-
-<a name="writing-finish"></a>
 
 ## Wrapping up
 
