@@ -29,7 +29,7 @@ Sagas, at a very high level, offer a way to handle synchronous actions from asyn
 
 ### Setup
 
-```javascript
+```typescript
 import { take, put, call } from 'redux-saga/effects';
 
 import Types from '../Actions/Types';
@@ -56,13 +56,13 @@ The above snippet is a very basic saga. It yields three things: waits for the LO
 
 There are a few interesting things one can do when you start testing sagas. Consider if you will the following snippet.
 
-```javascript
+```typescript
 const sagaStepper = (iterator) => (mockData) => iterator.next(mockData).value;
 ```
 
 So we've declared sagaStepper as a function that we expect to take a generator as an argument and that function's return will expect some mocked data (we'll be using objects). This sort of pattern is very useful for abstracting away what the saga generator is actually doing. It lets us do the following:
 
-```javascript
+```typescript
 const step = sagaStepper(saga());
 ```
 
@@ -72,7 +72,7 @@ Now step is a function that can be used to iterate and retrieve the sequential s
 
 One of the nice features about ava is the visual breakdown of the call stack upon an error. Give it a try. You'll see what I mean.
 
-```javascript
+```typescript
 import test from 'ava';
 import { take, put, call } from 'redux-saga/effects';
 
@@ -98,7 +98,7 @@ test('the watch login saga for success', (t) => {
 
 So now we have a test that will step through the watchLogin saga created earlier. Remember that there were three yields from the saga. The execution of the saga began the first call to our step function. So the first test:
 
-```javascript
+```typescript
 t.deepEqual(step(), take(Types.LOGIN));
 ```
 
@@ -110,7 +110,7 @@ The final test is much the same. We're expecting the next step to be a yield to 
 
 What about the error that can be caught from the saga? This example only tests the case where the API gives us some not-bad-return. Assume if you will that the Api.login in this example is some static fixture. The call to login just returns an expected "right" value that always allows it to pass the error check. In this case our iteration helper function isn't very helpful. We have no way to tell the saga that there's an error. Realistically the Api, fixture or otherwise, could return a correct state or throw an error on wrong output, but I've contrived this example.
 
-```javascript
+```typescript
 test('the watch login saga for failure', (t) => {
   const iterator = watchLogin();
   const mock = { username: 'fuz', password: 'wrong' };
@@ -137,7 +137,7 @@ That's essentially it. Testing step by step works well when you have concise syn
 
 redux-mock-store (https://github.com/arnaudbenard/redux-mock-store) allows you to mock reducer state to actions for the purpose of testing. It provides a middleware layer much like redux's store which can be used used with the redux-saga middleware. Consider the following test:
 
-```javascript
+```typescript
 import configureMockStore from 'redux-mock-store';
 import sagaMiddleware from 'redux-saga';
 import fetchMock from 'fetch-mock';

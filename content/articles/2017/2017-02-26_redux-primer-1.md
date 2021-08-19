@@ -54,13 +54,13 @@ If you want to know more about the history and motivation behind redux then I su
 
 **Action**: Strings that represent the name of an action. Usually defined as a constant. I refer to these as types.
 
-```javascript
+```typescript
 const HAS_APPLES = 'HAS_APPLES';
 ```
 
 **Action Creator**: Functions that return an object that describes an action. I often refer to these as creators. Think of them as giving context to an action that by itself has little meaning.
 
-```javascript
+```typescript
 const hasApples = (number_of_apples: number) => {
   return {
     type: HAS_APPLES,
@@ -71,7 +71,7 @@ const hasApples = (number_of_apples: number) => {
 
 **Reducer**: Pure functions that accept two arugments: the previous state and the return of an action creator. Reducers return the next or new state. They **DO NOT** modify the state that they were given.
 
-```javascript
+```typescript
 const hasApplesReducer = (state = PREVIOUS_STATE, action: Object) => {
   return {
     ...state,
@@ -148,7 +148,7 @@ Types are a value, usually a string, defined as a constant. They're analogous to
 
 These are valid types:
 
-```javascript
+```typescript
 const APP_START = 'APP_START';
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
 ```
@@ -161,7 +161,7 @@ We now have a type called `AUTH_SUCCESS` but we don't know what it actually does
 
 actions.js
 
-```javascript
+```typescript
 import { AUTH_SUCCESS } from './types';
 
 export const authSuccess = (user: Object) => ({
@@ -188,7 +188,7 @@ The Redux Store is the workhorse of redux. Everything that is Redux passes throu
 
 This is the most basic of stores:
 
-```javascript
+```typescript
 import { createStore } from 'redux';
 import reducer from '../reducers/';
 
@@ -197,7 +197,7 @@ export default createStore(reducer);
 
 Here we've done nothing really exciting with our store. We provided redux's `createStore()` with our reducer and exported the resulting store. Stores don't need to be any more complicated than this. However, in setup for the next section I'll show what a more robust store might look like.
 
-```javascript
+```typescript
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducer from '../reducers/';
 
@@ -230,7 +230,7 @@ Our store is ready to party. Though, say we want to log actions as they move thr
 
 The basic structure of a middleware:
 
-```javascript
+```typescript
 const middleware = (store: Object) => (next: function) => (action: Object) => {
   return next(action);
 };
@@ -238,7 +238,7 @@ const middleware = (store: Object) => (next: function) => (action: Object) => {
 
 You can evaluate the store before and after calling next. Next applies the action to the store but it does not modify the state.
 
-```javascript
+```typescript
 const middleware = (store: Object) =>
   (next: function) =>
     (action: Object) => {
@@ -278,7 +278,7 @@ Principle 3 requires that pure functions be used to modify state. As discussed a
 
 A common pattern in creating reducers is to define the initial state of a group of reducers.
 
-```javascript
+```typescript
 const INITIAL_STATE = {
   user: null,
 };
@@ -286,7 +286,7 @@ const INITIAL_STATE = {
 
 A reducer could easily look like the following. I've used `Object.assign` here to maintain simplicity and avoid relying on any immutability helpers.
 
-```javascript
+```typescript
 const receiveUser = (state = INITIAL_STATE, action: Object) => {
   return Object.assign({}, state, {
     user: action.user,
@@ -296,7 +296,7 @@ const receiveUser = (state = INITIAL_STATE, action: Object) => {
 
 We could map this reducer to an `AUTH_SUCCESS` action that contains a user object.
 
-```javascript
+```typescript
 export default rootReducer = (state = INITIAL_STATE, action: Object) => {
   switch (action.type) {
     case AUTH_SUCCESS:
@@ -309,7 +309,7 @@ export default rootReducer = (state = INITIAL_STATE, action: Object) => {
 
 I've shown here how a reducer could be crafted to update an object with the intended return of an action. However, what if we had an `UPDATE_FIRSTNAME` action that only updated the user object's first name? Assuming that the state's user property is no longer null we can clevery craft reducers with the es6 object spread operator.
 
-```javascript
+```typescript
 const updateUsername = (state = INITIAL_STATE, action: Object) => {
   return Object.assign({}, state, {
     user: {
@@ -322,7 +322,7 @@ const updateUsername = (state = INITIAL_STATE, action: Object) => {
 
 We also might need to mutate some API response that's given on an action to better suit our application's expectations.
 
-```javascript
+```typescript
 const mapResponse = ( state = INITIAL_STATE, action ) => {
   return Object.assign( {}, state, {
     user: {
@@ -356,7 +356,7 @@ Say that our user data contains an array of objects that contain meta data. Some
 
 Our state has been updated post auth such that the user property resembles the following:
 
-```javascript
+```typescript
 const INITIAL_STATE = {
   user: {
     fields: [
@@ -375,7 +375,7 @@ const INITIAL_STATE = {
 
 Within our reducer file we export a named function to select only the visible fields. Note that the state param will actually be the entire state of all reducers so we must address the state accordingly. I've also added some validation (this could also be done in the View layer).
 
-```javascript
+```typescript
 export const select_visibleUserData = (state) => {
   if (!state.auth.user.fields) {
     return [];
@@ -387,7 +387,7 @@ export const select_visibleUserData = (state) => {
 
 This selector will always return an array relative to the auth user state. Within a Redux connected React component we would use this selector in the mapStateToProps function.
 
-```javascript
+```typescript
 import { select_visibleUserData } from '../reducers/authReducer';
 
 const mapStateToProps = (state) => {

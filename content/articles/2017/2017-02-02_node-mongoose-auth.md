@@ -12,7 +12,7 @@ The following code snippets represent a straight forward approach to baking salt
 
 User Model Schema
 
-```javascript
+```typescript
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 const crypto = require('crypto');
@@ -37,12 +37,12 @@ Since the `salt` is required we want to generate the salt on the prevalidate hoo
 
 I'm going to define a few constants that will be used for hashing.
 
-```javascript
+```typescript
 const HASH_ITERATIONS = 10000;
 const HASH_KEYLEN = 512;
 ```
 
-```javascript
+```typescript
 UserSchema.pre('validate', function (next) {
   const user = this;
   if (!user.isModified('password')) {
@@ -75,7 +75,7 @@ _Keep in mind that pbkdf2 here is asynchronous. Crypto also provides a synchrono
 
 Next we want to provide our models of this schema a method for comparing cleartext passwords with the hash that we generated in the prevalidate section.
 
-```javascript
+```typescript
 UserSchema.methods.comparePassword = function (checkPassword, done) {
   const user = this;
 
@@ -106,6 +106,6 @@ User authentication doesn't have to be super complicated with Mongo, and we can 
 
 You can also export the model immediately.
 
-```javascript
+```typescript
 module.exports = Mongoose.model('User', UserSchema);
 ```

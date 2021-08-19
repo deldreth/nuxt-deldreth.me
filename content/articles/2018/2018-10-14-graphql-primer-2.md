@@ -289,7 +289,7 @@ Now that we're about to write the server for our data we begin talking about res
 
 If you've been following along from the base repository linked at the beginning of this article you've probably noticed a bare bones index.js in src. It looks something like this:
 
-```javascript
+```typescript
 // src/index.js
 const { ApolloServer } = require('apollo-server');
 const { importSchema } = require('graphql-import');
@@ -317,7 +317,7 @@ server.listen({ port: 4000 }).then(({ url }) => {
 
 There's no magic here. We're creating an Apollo Server at port 4000. I've imported importSchema from graql-import to handle the custom imports within our application schema. And I'm also providing custom context to each request in the form of a Prisma instance. I've specifically left the resolvers object literal empty in order to define them now. Apollo Server will use the keys in the resolvers map to bind resolution of fields. For example, if we look at our application schema we only have two types we need to worry about creating resolvers for at this time: Query and Mutation. The key to graphql type binding is 1:1 so if we update the resolvers map to something like:
 
-```javascript
+```typescript
 const resolvers = {
   Query: {},
 };
@@ -325,7 +325,7 @@ const resolvers = {
 
 We are actually informing Apollo Server of the resolution of the Query type in our schema. I'm sure you can guess what's next. Defining the functions that resolve to the queries. All resolvers for Apollo Server have the following signature:
 
-```javascript
+```typescript
 fieldName(obj, args, context, info) { result }
 ```
 
@@ -339,7 +339,7 @@ A quick breakdown of the parameters for a resolver...
 
 In the application schema we have three queries and our stubbed out resolvers can look something like:
 
-```javascript
+```typescript
 const resolvers = {
   Query: {
     location: (obj, args, context, info) => {},
@@ -355,7 +355,7 @@ Of course, these won't function as is. We need to actually specify the resolutio
 
 For our location query resolver we can use the `where` argument from Prisma's schema to limit the results.
 
-```javascript
+```typescript
 const resolvers = {
   Query: {
     location: (obj, args, context, info) => {
@@ -374,7 +374,7 @@ const resolvers = {
 
 We now have one working resolver for our location query. It will take the id argument, query Prisma, which in turn queries MySQL, and resolves our location. Continuing, our query resolvers will look something like:
 
-```javascript
+```typescript
 const resolvers = {
   Query: {
     location: (obj, args, context, info) => {
@@ -404,7 +404,7 @@ const resolvers = {
 
 I've shown what makes up a resolver for a query. Mutations are really not so different. They're still using Prisma to add or modify data.
 
-```javascript
+```typescript
 const resolvers = {
   Query: {...},
   Mutation: {
@@ -450,7 +450,7 @@ With the resolvers defined the server can function as expected. The example repo
 
 In summation the server should look something like this:
 
-```javascript
+```typescript
 const { ApolloServer } = require('apollo-server');
 const { importSchema } = require('graphql-import');
 const { Prisma } = require('prisma-binding');

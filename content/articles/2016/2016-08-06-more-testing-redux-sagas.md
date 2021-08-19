@@ -35,7 +35,7 @@ For this example I've created two sagas. One intended to yield to take on some L
 
 The watchLogin saga, much like my previous example, yields to take for a username and password and then does some basic "I'm doing this" sort of actions, calls an API function, handles the response. If the response is good it will fork another saga.
 
-```javascript
+```typescript
 export function* watchLogin() {
   while (true) {
     const { username, password } = yield take(Types.LOGIN);
@@ -59,7 +59,7 @@ export function* watchLogin() {
 
 The fetchUser saga isn't what's colloquially referred to as a watching saga. It doesn't yield to take. It expects that the state is to the point that it has everything it needs to make another API call. If auth wasn't set in the state this saga would fail as it yields to select to get the state. If you're not familiar with the concept of selectors I suggest looking at the reactjs/reselect project. Selectors have become the defacto method for getting state in the redux world. In this case the getState selector is actually returning the entire state of the application. Of course, selectors can be made to be very precise in what pieces of state they return.
 
-```javascript
+```typescript
 export function* fetchUser() {
   const { auth } = yield select(getState);
 
@@ -81,7 +81,7 @@ export function* fetchUser() {
 
 We've seen how state must be injected on the test end after the yield to a take or call has occurred. Yields to select effects are no different. The following is an excerpt from the entire test of the watchLogin saga.
 
-```javascript
+```typescript
 t.deepEqual(userStep(), select(getState));
 
 t.deepEqual(userStep(getState()), put(Actions.startActivity()));
@@ -93,7 +93,7 @@ The userStep saga's first yield is a select. The getState() function is just a s
 
 Testing for yields to fork effects are much like any other tests. We know that a step of the watchLogin saga will fork and we know which generator the fork will execute.
 
-```javascript
+```typescript
 import test from 'ava';
 import { take, select, put, call, fork } from 'redux-saga/effects';
 

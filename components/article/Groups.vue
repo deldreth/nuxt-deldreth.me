@@ -5,9 +5,7 @@
       :key="group.year"
       class="gap-6 grid grid-cols-1 mb-10"
     >
-      <div
-        class="text-lg md:text-2xl xl:text-4xl text-pink text-right -mb-2 mt-4"
-      >
+      <div class="text-2xl md:text-3xl xl:text-4xl text-pink text-right">
         {{ group.year }}
       </div>
 

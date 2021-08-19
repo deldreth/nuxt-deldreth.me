@@ -104,7 +104,7 @@ This package.json configuration can be used reguardless of whether you're shipin
 
 Here I've gone with commonjs bundle to keep this rollup config simple.
 
-```javascript
+```typescript
 // rollup.config.js
 import pkg from './package.json';
 

@@ -20,7 +20,7 @@ has a creator that will dispatch the action with an expected array of strings
 called `errors`. The `ERROR_CLEAR` type will update the state such that `errors`
 is an empty array.
 
-```javascript
+```typescript
 import update from 'immutability-helper';
 import { createReducer } from 'reduxsauce';
 
@@ -48,7 +48,7 @@ export default createReducer(INITIAL_STATE, HANDLERS);
 
 We'll start by importing the necessary packages, etc.
 
-```javascript
+```typescript
 import test from 'ava';
 
 import reducer, { INITIAL_STATE } from 'src/reducers/error';
@@ -58,7 +58,7 @@ import { Creators } from 'src/actions';
 To test the initial state matches our expected state we will grab the initial state
 and pass it through the imported reducer.
 
-```javascript
+```typescript
 test('initial state', (t) => {
   t.deepEqual(INITIAL_STATE, reducer(INITIAL_STATE, {}));
 });
@@ -73,7 +73,7 @@ faciliating part of the middleware execution that would happen in the Store.
 
 We deep equal check that the state matches the object we're expecting.
 
-```javascript
+```typescript
 test('dispatch ERROR_RECEIVE', (t) => {
   let state = reducer(INITIAL_STATE, {});
 
@@ -88,7 +88,7 @@ test('dispatch ERROR_RECEIVE', (t) => {
 
 The same is true for testing `ERROR_CLEAR`.
 
-```javascript
+```typescript
 test('dispatch ERROR_CLEAR', (t) => {
   let state = reducer(INITIAL_STATE, {});
 

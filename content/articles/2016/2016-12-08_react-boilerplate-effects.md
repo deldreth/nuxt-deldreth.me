@@ -27,7 +27,7 @@ functions (nothing quite as complicated as sagas).
 The most basic side effect of the boilerplate app is expecting the app to
 load. Previously with redux sagas that generator looked like this:
 
-```javascript
+```typescript
 export function* watchAppLoaded() {
   while (true) {
     yield take(Types.LOADED);
@@ -41,7 +41,7 @@ We eventually `fork` the saga as part of the export.
 
 With redux-effex and async functions we can rework this side effect as:
 
-```javascript
+```typescript
 import type { EffectParams } from 'redux-effex';
 
 async function loadedAync({ action, dispatch, getState }: EffectParams) {
@@ -70,7 +70,7 @@ With redux-effex we can simply define an expression as await. The previous
 example dispatched the FETCH_POSTS action. Here is the async function for handling
 the side effects.
 
-```javascript
+```typescript
 async function fetchPostsAsync({ actions, dispatch, getState }: EffectParams) {
   const response = await Api.getPosts();
 

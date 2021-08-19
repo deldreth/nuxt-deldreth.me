@@ -50,7 +50,7 @@ see if it should be adding or subtracting _50_ with the state's left.
 LayoutAnimation takes care of the rest and the frames between the renders
 will be animated.
 
-```javascript
+```typescript
 import React, { Component } from 'react';
 import {
   AppRegistry,
