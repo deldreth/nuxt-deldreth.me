@@ -1,5 +1,5 @@
 <template>
-  <CardSection>
+  <Card>
     <CardThumbnail
       :thumbnail="article.thumbnail"
       :background-color="article.thumbnailBg"
@@ -21,7 +21,7 @@
 
       <Tag v-for="tag in article.tags" :key="tag" :tag="tag" />
     </div>
-  </CardSection>
+  </Card>
 </template>
 
 <script lang="ts">

@@ -1,6 +1,6 @@
 <template>
   <div class="prose prose-sm max-w-none grid grid-cols-1 gap-6">
-    <CardSection v-for="app in apps" :key="app.title">
+    <Card v-for="app in apps" :key="app.title">
       <CardThumbnail :thumbnail="app.thumbnail" />
 
       <div class="md:col-span-2">
@@ -11,7 +11,7 @@
           class="text-light md:text-lg xl:text-xl"
         />
       </div>
-    </CardSection>
+    </Card>
   </div>
 </template>
 
