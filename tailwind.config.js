@@ -47,6 +47,9 @@ export default {
                 color: theme('colors.gray.800'),
               },
             },
+            '.tag': {
+              color: theme('colors.gray.800'),
+            },
             strong: {
               color: theme('colors.orange'),
             },

@@ -5,6 +5,7 @@ tags: ['react', 'web sockets', 'rpi']
 thumbnail: unicorn.png
 thumbnailBg: '#d8f1d0'
 github: https://github.com/deldreth/unicorn-onair
+published: false
 ---
 
 This project is a second iteration of a physical "on the phone" notifier I use for my home office. It was built with a raspberry pi zero and Pimoroni's Unicorn pHAT.

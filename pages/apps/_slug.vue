@@ -19,7 +19,7 @@ export default {
   async asyncData({ $content, params: { slug }, error }) {
     let app;
     try {
-      app = await $content('apps', slug).fetch();
+      app = await $content('apps', slug).where({ published: true }).fetch();
     } catch (e) {
       error({ message: 'App not found', status: 404 });
     }

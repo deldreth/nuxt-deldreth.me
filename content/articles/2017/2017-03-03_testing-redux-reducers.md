@@ -2,6 +2,7 @@
 title: Testing redux reducers
 date: 2017-03-03
 tags: ['react', 'redux', 'testing']
+published: true
 ---
 
 A coworker asked me to write up an article detailing testing Redux Reducers.

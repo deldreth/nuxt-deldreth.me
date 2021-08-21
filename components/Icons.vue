@@ -16,13 +16,25 @@
         alt="Walter Melon"
       />
     </a>
-    <a href="http://github.com/deldreth" target="_blank">
+    <a
+      href="http://github.com/deldreth"
+      target="_blank"
+      aria-label="github profile"
+    >
       <font-awesome-icon :icon="['fab', 'github']" />
     </a>
-    <a href="http://twitter.com/deldreth" target="_blank">
+    <a
+      href="http://twitter.com/deldreth"
+      target="_blank"
+      aria-label="twitter profile"
+    >
       <font-awesome-icon :icon="['fab', 'twitter']" />
     </a>
-    <a href="https://www.linkedin.com/in/deldreth" target="_blank">
+    <a
+      href="https://www.linkedin.com/in/deldreth"
+      target="_blank"
+      aria-label="linkedin profile"
+    >
       <font-awesome-icon :icon="['fab', 'linkedin']" />
     </a>
   </div>

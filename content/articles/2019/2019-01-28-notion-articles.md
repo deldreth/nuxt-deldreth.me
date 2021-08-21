@@ -3,6 +3,7 @@ title: Planning and note taking in Notion
 date: 2019-01-28
 tags: ['announcment']
 thumbnail: thumbnail.png
+published: false
 ---
 
 The so far powerfully effective notetaking-boardplanning-toolbox of https://www.notion.so seems to be taking the Startup scene by storm.

@@ -4,6 +4,7 @@ date: 2018-10-05
 tags: ['graphql', 'schema', 'api']
 thumbnail: graphql.png
 thumbnailBg: '#fce7f4'
+published: true
 ---
 
 In November I'll be giving a talk about GraphQL to the Asheville Javascript Developers group. From schema definition to its use in today's applications. This is part one of three of what will become that talk.

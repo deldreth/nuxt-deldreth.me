@@ -6,6 +6,7 @@ thumbnail: apps/avl.tips.png
 thumbnailBg: '#d8f1d0'
 link: https://avl.tips/
 github: https://github.com/deldreth/avl-tips
+published: false
 ---
 
 "Help the Asheville Service Industry". With in the onset of the pandemic in 2020 service industry employees experienced excess layoffs. Having personally known a number of folks within the Asheville metro area I decided to create this simple little app. At a basic level, it allows generous people that would be dining or drinking in public donate a "tip" to someone random that was experiencing financial hardship.

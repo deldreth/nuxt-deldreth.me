@@ -4,6 +4,7 @@ date: 2017-12-12
 tags: ['typescript', 'flow', 'react']
 thumbnail: typescript.png
 thumbnailBg: '#007ACC'
+published: true
 ---
 
 After approximately 2 years of working with flow and its frustrations I decided it was time to move fully into TypeScript.

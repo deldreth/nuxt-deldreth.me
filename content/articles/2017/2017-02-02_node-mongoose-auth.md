@@ -2,6 +2,7 @@
 title: Node, mongoose, and user authentication
 date: 2017-02-02
 tags: ['node', 'mongodb', 'authentication']
+published: true
 ---
 
 Code snippets for user authentication with mongoose schemas.

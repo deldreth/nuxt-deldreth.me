@@ -3,6 +3,7 @@ title: Cluster computing with a raspberry pi bramble
 date: 2016-10-03
 tags: ['project', 'rpi', 'cluster computing']
 thumbnail: berries.jpg
+published: true
 ---
 
 My goal here was to simply create a cluster of raspberry pi 3s (colloquially

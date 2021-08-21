@@ -19,6 +19,7 @@
 export default {
   async asyncData({ $content }: any) {
     const apps = await $content('apps', { deep: true })
+      .where({ published: true })
       .sortBy('date', 'desc')
       .fetch();
 

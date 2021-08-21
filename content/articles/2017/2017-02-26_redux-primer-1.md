@@ -4,6 +4,7 @@ date: 2017-02-26
 tags: ['redux']
 thumbnail: Redux_logo.png
 thumbnailBg: '#C097FFBF'
+published: true
 ---
 
 A basic, barebones tutorial for Redux

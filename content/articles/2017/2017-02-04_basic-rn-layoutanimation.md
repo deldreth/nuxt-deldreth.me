@@ -2,6 +2,7 @@
 title: Animations in React Native with layoutAnimation
 date: 2017-04-02
 tags: ['react native', 'animation']
+published: true
 ---
 
 Using LayoutAnimation to perform css transition like animations.

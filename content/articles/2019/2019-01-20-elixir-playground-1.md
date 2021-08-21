@@ -4,6 +4,7 @@ date: 2019-01-20
 tags: ['elixir', 'learning']
 thumbnail: elixir.png
 thumbnailBg: '#CDADE7bf'
+published: true
 ---
 
 Elixir has been a language on my list of things to familiarize myself with for a while. Not for any particular reason of my own but it does pose some interesting solutions for difficult performance problems.
