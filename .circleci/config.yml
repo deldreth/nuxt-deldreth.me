@@ -53,7 +53,7 @@ jobs:
             - run:
                 name: Version and Release Production
                 command: |
-                  npm run release --message "chore(release): %s [ci skip]"
+                  npm run release -- --message "chore(release): %s [ci skip]"
 
       - run: git push --follow-tags origin main
 
@@ -91,7 +91,7 @@ jobs:
                 command: aws s3 rm $PRODUCTION_BUCKET_URL --recursive
 
             - run:
-                name: Deploy to Staging
+                name: Deploy to Production
                 command: aws s3 sync . $PRODUCTION_BUCKET_URL --acl public-read
 
             - run: aws configure set preview.cloudfront true
