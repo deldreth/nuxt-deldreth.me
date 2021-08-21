@@ -17,8 +17,8 @@ jobs:
             - node-v1-{{ checksum "package-lock.json" }}
 
       - run: |
-          git config user.email "devin.eldreth@gmail.com"
-          git config user.name "Devin Eldreth"
+          git config user.email "$EMAIL"
+          git config user.name "$GIT_USERNAME"
 
       - run:
           name: Install dependencies
@@ -70,17 +70,35 @@ jobs:
 
       - run: sudo pip install awscli
 
-      - run: aws s3 rm s3://staging.deldreth.me --recursive
+      - when:
+          condition:
+            equal: [false, << pipeline.parameters.do-release >>]
+          steps:
+            - run:
+                name: Delete Bucket Contents
+                command: aws s3 rm $STAGING_URL --recursive
 
-      - run:
-          name: Deploy to Staging
-          command: aws s3 sync . s3://staging.deldreth.me/ --acl public-read
+            - run:
+                name: Deploy to Staging
+                command: aws s3 sync . $STAGING_URL --acl public-read
 
-      # - run: aws configure set preview.cloudfront true
+      - when:
+          condition:
+            equal: [true, << pipeline.parameters.do-release >>]
+          steps:
+            - run:
+                name: Delete Bucket Contents
+                command: aws s3 rm $PRODUCTION_BUCKET_URL --recursive
 
-      # - run:
-      #     name: Invalidate CDN
-      #     command: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
+            - run:
+                name: Deploy to Staging
+                command: aws s3 sync . $PRODUCTION_BUCKET_URL --acl public-read
+
+            - run: aws configure set preview.cloudfront true
+
+            - run:
+                name: Invalidate CDN
+                command: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
 
 workflows:
   version: 2
