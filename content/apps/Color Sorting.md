@@ -4,7 +4,7 @@ date: 2020-12-20
 tags: ['web components', 'stencil']
 thumbnail: apps/deldreth.me_color-sorting.png
 thumbnailBg: '#d8f1d0'
-link: https://deldreth.me/color-sorting
+link: http://color-sorting.s3-website-us-east-1.amazonaws.com/
 github: https://github.com/deldreth/color-sorting
 published: true
 ---
@@ -17,7 +17,7 @@ After playing a mobile game where colored liquids were transferred into differen
 
 ## Game
 
-<iframe src="https://deldreth.me/color-sorting/" class="w-full h-96"></iframe>
+<iframe src="http://color-sorting.s3-website-us-east-1.amazonaws.com/" class="w-full h-96"></iframe>
 
 ## Premise
 
