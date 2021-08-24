@@ -13,11 +13,11 @@ After playing a mobile game where colored liquids were transferred into differen
 
 <!--more-->
 
-<script type="module" src="http://color-sorting.s3-website-us-east-1.amazonaws.com/components/components.esm.js" crossorigin="anonymous"></script>
+<script type="module" src="https://d2uwzzm709sjwb.cloudfront.net/components/components.esm.js" crossorigin="anonymous"></script>
 
 ## Game
 
-<iframe src="http://color-sorting.s3-website-us-east-1.amazonaws.com/" class="w-full h-96"></iframe>
+<iframe src="https://d2uwzzm709sjwb.cloudfront.net/" class="w-full h-96"></iframe>
 
 ## Premise
 
