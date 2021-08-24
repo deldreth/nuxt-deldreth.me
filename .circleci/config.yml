@@ -20,6 +20,8 @@ jobs:
           git config user.email "$EMAIL"
           git config user.name "$GIT_USERNAME"
 
+      - run: git tag --list
+
       - run:
           name: Install dependencies
           command: npm ci
