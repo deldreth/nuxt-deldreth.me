@@ -10,12 +10,6 @@
   </div>
 </template>
 
-<style>
-.nuxt-content-editor {
-  background-color: #44475a;
-}
-</style>
-
 <script lang="ts">
 export default {
   head: {
@@ -25,3 +19,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.nuxt-content-editor {
+  background-color: #44475a;
+}
+</style>
