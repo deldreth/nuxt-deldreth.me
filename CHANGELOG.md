@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/deldreth/nuxt-deldreth.me/compare/v0.0.3...v0.0.4) (2021-08-25)
+
+
+### Bug Fixes
+
+* linting issues in Tag and default components ([4835722](https://github.com/deldreth/nuxt-deldreth.me/commit/483572266c05028ba52dc846fe6636e030a54aa0))
+* **release:** delete any prerelease tags to correctly generate CHANGELOG ([81f0651](https://github.com/deldreth/nuxt-deldreth.me/commit/81f065116cf5b0ada20722b7169728b10160d236))
+* update tailwind config to pull class entries from .md files ([b15af09](https://github.com/deldreth/nuxt-deldreth.me/commit/b15af090bd6a2c2a5ca339f442d673615ec52541))
+
 ## [0.0.3](https://github.com/deldreth/nuxt-deldreth.me/compare/v0.0.3-0...v0.0.3) (2021-08-24)
 
 ### Bug Fixes
