@@ -73,17 +73,16 @@ _Stencil.js_, Ionic's framework for creating and publishing web components. Ther
 <div class="flex">
   <div class="flex-1 mr-4">
     The most important of these props being colors which receives a string encoded JSON that represents the HTML or hex colors contained in the bottle. Rendered top down from left to right.
-
-```html
-<a-bottle colors='["#bd93f9", "#ff5555", "#50fa7b", "#ffb86c"]' />
-```
-
   </div>
 
   <div>
     <a-bottle colors='["#bd93f9", "#ff5555", "#50fa7b", "#ffb86c"]'/>
   </div>
 </div>
+
+```html
+<a-bottle colors='["#bd93f9", "#ff5555", "#50fa7b", "#ffb86c"]' />
+```
 
 ### Game Package
 
