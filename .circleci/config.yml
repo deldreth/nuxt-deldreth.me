@@ -50,11 +50,11 @@ jobs:
           condition:
             equal: [true, << pipeline.parameters.do-release >>]
           steps:
+            - run: git tag -l | grep \- | xargs git tag -d
             - run:
                 name: Version and Release Production
                 command: |
                   npm run release -- --message "chore(release): %s [ci skip]"
-            - run: cat CHANGELOG.md
 
       - run: git push --follow-tags origin main
 
