@@ -51,6 +51,8 @@ _Stencil.js_, Ionic's framework for creating and publishing web components. Ther
 
 ## Structure
 
+### Bottle Component
+
 <div class="flex">
   <div>
 	  <a-bottle colors='["rebeccapurple"]'/>
@@ -82,3 +84,21 @@ _Stencil.js_, Ionic's framework for creating and publishing web components. Ther
     <a-bottle colors='["#bd93f9", "#ff5555", "#50fa7b", "#ffb86c"]'/>
   </div>
 </div>
+
+### Game Package
+
+The game package contains a Stencil.js application that imports the components package and uses the a-bottle component to create the board, provide instructions, and a set of UI controls.
+
+All of the game logic is housed within the app-board component and a redux slice to handle some of the actions dispatched from the board. This slice is responsible for initializing the board and maintaining the visual state of the game which is then used to render each a-bottle component.
+
+The initial state of the slice. Here selectedIndex and warningIndex are integers that map to which bottle the user has selected and which bottle has an error state due to an incorrect move. The previousStates array contains the previous states of the board. After a move is completed the previous state of the board is pushed onto this array.
+
+```json
+{
+  "board": [],
+  "selectedIndex": null,
+  "warningIndex": null,
+  "previousStates": [],
+  "undos": Number.POSITIVE_INFINITY,
+}
+```

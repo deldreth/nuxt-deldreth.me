@@ -20,8 +20,6 @@ jobs:
           git config user.email "$EMAIL"
           git config user.name "$GIT_USERNAME"
 
-      - run: git tag --list
-
       - run:
           name: Install dependencies
           command: npm ci
@@ -56,6 +54,7 @@ jobs:
                 name: Version and Release Production
                 command: |
                   npm run release -- --message "chore(release): %s [ci skip]"
+            - run: cat CHANGELOG.md
 
       - run: git push --follow-tags origin main
 

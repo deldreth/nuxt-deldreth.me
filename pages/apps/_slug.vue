@@ -1,6 +1,7 @@
 <template>
   <article class="prose-sm prose lg:prose-lg xl:prose-xl mx-auto">
     <img
+      v-if="app.thumbnail"
       :src="require(`~/assets/${app.thumbnail}`)"
       alt="App Thumbnail"
       class="shadow-lg rounded-md"

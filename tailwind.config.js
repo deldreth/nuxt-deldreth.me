@@ -2,6 +2,14 @@ import tailwindTypography from '@tailwindcss/typography';
 import tailwindDracula from 'tailwind-dracula';
 
 export default {
+  purge: {
+    content: [
+      './components/**/*.vue',
+      './layouts/**/*.vue',
+      './pages/**/*.vue',
+      './content/**/*.md',
+    ],
+  },
   theme: {
     extend: {
       typography: (theme) => ({
